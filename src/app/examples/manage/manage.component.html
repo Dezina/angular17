@@ -1,0 +1,28 @@
+<mat-grid-list cols="4" rowHeight="200px">
+
+  <ul class="card-list">
+    @for (tile of tiles; track tile.id) {
+    <li class="card-list-item">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ tile.cardTitle }}</mat-card-title>
+            <mat-card-subtitle>{{ tile.cardSubtitle }}</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <img mat-card-image [src]="tile.imageUrl" alt="Card Image" class="card-img">
+        <mat-card-actions>
+          <button mat-icon-button (click)="onLikeClick(tile)">
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onShareClick(tile)">
+            <mat-icon>share</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+    } @empty {
+    <span>Empty list of users</span>
+    }
+  </ul>
+</mat-grid-list>

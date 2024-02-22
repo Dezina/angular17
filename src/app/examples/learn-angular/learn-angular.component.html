@@ -1,0 +1,36 @@
+<h1>Learn angular your way</h1>
+<mat-tab-group animationDuration="1000ms">
+    <mat-tab label="References">
+        <div class="content">
+            <p>Explore Angular references to enhance your learning:</p>
+            <a href="https://angular.io/tutorial/first-app"
+                target="_blank">Angular 17 Tutorials</a>
+                <br/>
+            <a href="https://www.itsolutionstuff.com/post/angular-17-crud-application-tutorial-exampleexample.html"
+                target="_blank">Angular 17 CRUD Application Tutorial</a>
+            <div class="animated-image"></div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Practice">
+        <div class="content">
+            <p>Practice your Angular skills with this GitHub repository:</p>
+            <a href="https://github.com/savanihd/Angular-17-CRUD-Application" target="_blank">Angular 17 CRUD
+                Application on GitHub</a>
+            <div class="animated-image"></div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Theory">
+        <div class="content">
+            <p>Understand Angular theory with this informative article:</p>
+            <a href="https://www.itsolutionstuff.com/post/angular-17-crud-application-tutorial-exampleexample.html"
+                target="_blank">Angular 17 CRUD Application Tutorial</a>
+            <div class="animated-image"></div>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
+<mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+    @for (chip of suggestions; track chip) {
+    <mat-chip-option selected [color]="chip.color">{{chip.name}}</mat-chip-option>
+    }
+</mat-chip-listbox>

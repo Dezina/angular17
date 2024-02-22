@@ -1,0 +1,105 @@
+<style>
+  :host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(180deg,
+        var(--orange-red) 0%,
+        var(--vivid-pink) 50%,
+        var(--electric-violet) 100%);
+
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(90deg,
+        var(--orange-red) 0%,
+        var(--vivid-pink) 50%,
+        var(--electric-violet) 100%);
+
+    --pill-accent: var(--bright-blue);
+
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-size: 3.125rem;
+    color: var(--gray-900);
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.125rem;
+    margin: 0;
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+  }
+</style>
+
+<main class="main">
+  <div class="content">
+    <google-map height="400px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+      (mapMousemove)="move($event)">
+    </google-map>
+
+    <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" routerLink="/">Angular17 app</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          @if(authData?.user !== null) {
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              @for (route of privateRoutes; track route.id) {
+               <li class="nav-item">
+                <a routerLink={{route.route}} class="nav-link" class="btn btn-primary">{{route.title}}</a>
+               </li>
+              }
+          </ul>
+           }@else if (user) {
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            @for (route of privateRoutes; track route.id) {
+              <li class="nav-item">
+               <a routerLink={{route.route}} class="nav-link" class="btn btn-primary">{{route.title}}</a>
+              </li>
+             }
+            </ul>
+          }@else {
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              @for (route of publicRoutes; track route.id) {
+               <li class="nav-item">
+                  <a routerLink={{route.route}} class="nav-link" class="btn btn-primary">{{route.title}}</a>
+               </li>
+              }
+          </ul>
+           }
+          
+          <span class="navbar-text">
+            @if(authData?.user?.email !== null) {
+              <button type="button" class="btn btn-primary" (click)="onLogout()">
+               Logout
+              </button>
+            } @else if (user) {
+              <button type="button" class="btn btn-primary" (click)="onLogout()">
+                Logout
+               </button>
+            } 
+          </span>
+        </div>
+      </div>
+    </nav>
+    <!-- <app-index></app-index> -->
+  </div>
+</main>
+
+<router-outlet></router-outlet>

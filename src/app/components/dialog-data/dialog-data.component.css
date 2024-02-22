@@ -1,0 +1,11 @@
+.full-size-image-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .full-size-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* This property ensures that the entire image is displayed within the container */
+  }
+  

@@ -1,0 +1,17 @@
+.card-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .card-list-item {
+    flex: 0 1 calc(25% - 10px); /* Adjust width based on your needs, considering margins */
+    margin-bottom: 20px; /* Adjust margin based on your needs */
+  }
+.card-img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  
